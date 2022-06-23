@@ -6,7 +6,7 @@ $data = json_decode($raw);
 
 // echo json_encode($data->Seri);
 
-$sql = "delete from toko_laptop where Seri='" . $data->Seri . "'";
+$sql = "delete from toko_laptop where seri='" . $data->Seri . "'";
 $result = pg_query($sql);
 $row = pg_affected_rows($result);
 
