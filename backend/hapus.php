@@ -4,9 +4,9 @@ require_once '../koneksi.php';
 $raw = file_get_contents('php://input');
 $data = json_decode($raw);
 
-// echo json_encode($data->judul_buku);
+// echo json_encode($data->Seri);
 
-$sql = "delete from toko_buku where judul_buku='" . $data->judul_buku . "'";
+$sql = "delete from toko_laptop where Seri='" . $data->Seri . "'";
 $result = pg_query($sql);
 $row = pg_affected_rows($result);
 

@@ -4,10 +4,10 @@ require_once '../koneksi.php';
 $raw = file_get_contents('php://input');
 $data = json_decode($raw);
 
-// echo $data->judul_buku;
+// echo $data->Seri;
 
-$sql = "insert into toko_buku(judul_buku, penulis, penerbit) values('" .
-    $data->judul_buku . "','" . $data->penulis . "','" . $data->penerbit . "')";
+$sql = "insert into toko_laptop(Seri, Merek, Tahun_produksi) values('" .
+    $data->Seri . "','" . $data->Merek . "','" . $data->Tahun_produksi . "')";
 $result = pg_query($sql);
 $row = pg_affected_rows($result);
 $obj = new stdClass();

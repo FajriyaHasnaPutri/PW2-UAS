@@ -3,23 +3,23 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-        <title>Aplikasi Toko Buku</title>
+        <title>Aplikasi Toko Laptop</title>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <!-- <script src="js/jquery-migrate-1.4.1.min"></script> -->
     </head>
-    <body style="background-color: black">
+    <body style="background-color:rgba(124, 157, 215, 0.749)">
         <div class="container" style="margin-top: 100px; ">
             <div class="row">
                 <div class="card mt-5">
                     <div class="card-body">
-                        <h1 class="text-center">Aplikasi Toko Buku</h1>
+                        <h1 class="text-center">Aplikasi Toko Laptop</h1>
                             <button id="btnTambah" type="button" class="btn btn-light" >Tambah</button> 
                         <table class="table table-bordered table-danger" >
                             <thead>
                                 <tr>
                                     <td>Judul Buku</td>
-                                    <td>Penulis</td>
-                                    <td>Penerbit</td>
+                                    <td>Merek</td>
+                                    <td>Tahun_produksi</td>
                                     <td>Aksi</td>
                                 </tr>
                             </thead>
@@ -45,11 +45,11 @@
                 resultTag = "";
                 for(i=0; i<result.length; i++) {
                     resultTag += "<tr>" +
-                        "<td>" + result[i].judul_buku + "</td>" +
-                        "<td>" + result[i].penulis + "</td>" +
-                        "<td>" + result[i].penerbit + "</td>" +
-                        '<td><button type="button" class="btn btn-primary" id="hapus" judul_buku="' + result[i].judul_buku + '">Hapus</button>&nbsp;' +
-                        '<button type="button" class="btn btn-info" id="edit" judul_buku="' + result[i].judul_buku + '">Ubah</button></td>' +
+                        "<td>" + result[i].Seri + "</td>" +
+                        "<td>" + result[i].Merek + "</td>" +
+                        "<td>" + result[i].Tahun_produksi + "</td>" +
+                        '<td><button type="button" class="btn btn-primary" id="hapus" Seri="' + result[i].Seri + '">Hapus</button>&nbsp;' +
+                        '<button type="button" class="btn btn-info" id="edit" Seri="' + result[i].Seri + '">Ubah</button></td>' +
                         "</tr>";
                 }
                 $("#isi").html(resultTag);
@@ -58,10 +58,10 @@
     });
 
     $(document).on('click', "#hapus", function() {
-        var judul_buku = $(this).attr("judul_buku");
-        console.log(judul_buku);
+        var Seri = $(this).attr("Seri");
+        console.log(Seri);
         var param = new Object();
-        param.judul_buku = judul_buku;
+        param.Seri = Seri;
         $.post("../backend/hapus.php", JSON.stringify(param), 
           function(resp) {
             var obj = JSON.parse(resp);
@@ -75,8 +75,8 @@
     });
 
     $(document).on('click', '#edit', function() {
-        var judul_buku = $(this).attr('judul_buku');
-        window.location.href = "./ubah.html?judul_buku=" + judul_buku;
+        var Seri = $(this).attr('Seri');
+        window.location.href = "./ubah.html?Seri=" + Seri;
     });
 </script>        
     </body>
